@@ -1,0 +1,105 @@
+<form>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="text"
+      name="firstName"
+      id="firstName"
+      placeholder="First Name"
+      ngModel
+      (change)="log(firstName)"
+      #firstName="ngModel"
+      required
+      minlength="3"
+      pattern="[a-z,A-Z]{3,30}"
+    />
+    <div
+      class="alert alert-danger"
+      *ngIf="firstName.touched && !firstName.valid"
+    >
+      <div *ngIf="firstName.errors?.['required']">
+        Please enter your first Name
+      </div>
+      <div *ngIf="firstName.errors?.['minlength']">
+        Please enter atleast 3 characters
+      </div>
+      <div *ngIf="firstName.errors?.['pattern']">
+        Please enter a valid first Name
+      </div>
+    </div>
+    <input
+      class="form-control"
+      type="text"
+      name="lastName"
+      id="lastName"
+      placeholder="Last Name"
+      ngModel
+      #lastName="ngModel"
+      required
+      minlength="3"
+      pattern="[a-z,A-Z]{4,30}"
+    />
+    <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">
+      <div *ngIf="lastName.errors?.['required']">
+        Please enter your Last Name
+      </div>
+      <div *ngIf="lastName.errors?.['minlength']">
+        Please enter atleast 3 characters
+      </div>
+      <div *ngIf="lastName.errors?.['pattern']">
+        Please enter a valid Last Name
+      </div>
+    </div>
+    <input
+      class="form-control"
+      type="text"
+      name="civilId"
+      id="civilId"
+      placeholder="Civil Id"
+      ngModel
+      #civilId="ngModel"
+      required
+      minlength="12"
+      pattern="[0-9]{12}"
+    />
+    <div class="alert alert-danger" *ngIf="civilId.touched && !civilId.valid">
+      <div *ngIf="civilId.errors?.['required']">Please enter your Civil Id</div>
+
+      <div *ngIf="civilId.errors?.['pattern']">
+        Please enter a valid civil Id of length 12 numbers
+      </div>
+    </div>
+    <input
+      class="form-control"
+      type="text"
+      name="password"
+      id="password"
+      placeholder="Password"
+      ngModel
+      #password="ngModel"
+      required
+      minlength="8"
+      pattern="[a-z]{8-30}"
+    />
+  </div>
+  <div class="alert alert-danger">
+    <div *ngIf="checkCapital(password)">
+      Must contain atleast 1 Capital Case Letter
+    </div>
+    <div *ngIf="checkSmall(password)">
+      Must contain atleast 1 Small Case Letter
+    </div>
+    <div *ngIf="checkNum(password)">Must conatin atleast 1 Number</div>
+    <div *ngIf="checkSpecialChar(password)">
+      Must conatin atleast 1 Special Character
+    </div>
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="
+      signup(firstName.value, lastName.value, civilId.value, password.value)
+    "
+  >
+    Sign up
+  </button>
+</form>
