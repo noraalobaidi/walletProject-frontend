@@ -1,0 +1,61 @@
+<form>
+  <input
+    class="form-control"
+    type="text"
+    name="civilId"
+    id="civilId"
+    placeholder="Civil Id"
+    ngModel
+    #civilId="ngModel"
+    required
+    minlength="12"
+    pattern="[0-9]{12}"
+  />
+  <div class="alert alert-danger" *ngIf="civilId.touched && !civilId.valid">
+    <div *ngIf="civilId.errors?.['required']">Please enter your Civil Id</div>
+
+    <div *ngIf="civilId.errors?.['pattern']">
+      Please enter a valid civil Id of length 12 numbers
+    </div>
+  </div>
+  <input
+    class="form-control"
+    type="number"
+    name="accountNo"
+    id="accountNo"
+    placeholder="Account Number"
+    ngModel
+    #accountNo="ngModel"
+    required
+    minlength="11"
+    pattern="[0-9]{11}"
+  />
+  <div class="alert alert-danger" *ngIf="accountNo.touched && !accountNo.valid">
+    <div *ngIf="accountNo.errors?.['required']">
+      Please enter your Account Number
+    </div>
+
+    <div *ngIf="accountNo.errors?.['pattern']">
+      Please enter a valid Account Number of length 11 numbers
+    </div>
+  </div>
+  <input
+    class="form-control"
+    type="text"
+    name="password"
+    id="password"
+    placeholder="Password"
+    ngModel
+    #password="ngModel"
+    required
+    minlength="8"
+    pattern="[a-z]{8-30}"
+  />
+
+  <button
+    class="btn btn-primary"
+    (click)="login(civilId.value, accountNo.value, password.value)"
+  >
+    login
+  </button>
+</form>
