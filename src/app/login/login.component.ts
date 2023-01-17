@@ -15,6 +15,8 @@ export class LoginComponent {
   }
   loggedinAccount!: Account;
   accountflag: boolean = false;
+  civilIdflag: boolean = false;
+  passwordflag: boolean = false;
 
   login(civilId: number, accountNo: number, password: string) {
     // console.log(this.service.accountsList);
@@ -32,12 +34,17 @@ export class LoginComponent {
           this.accountflag = true;
 
           if (element.civil_id == civilId) {
+            this.civilIdflag = true;
             if (element.password == password) {
+              this.passwordflag = true;
               this.loggedinAccount = element;
+              this.service.loggedInAccount = element;
             } else {
+              this.passwordflag = false;
               alert('invalid password');
             }
           } else {
+            this.civilIdflag = false;
             alert('invalid civil id');
           }
         }
@@ -45,9 +52,8 @@ export class LoginComponent {
     );
     if (this.accountflag == false) {
       alert('invalid account number');
-    } else {
-      this.router.navigate(['homepage']);
     }
+
     // this.loggedinAccount = this.service.accountsList.filter(
     //   (element: { account_no: number }) => {
     //     console.log(element);
@@ -56,6 +62,9 @@ export class LoginComponent {
     //   }
     // );
     console.log(this.loggedinAccount);
+    if (this.accountflag && this.civilIdflag && this.passwordflag) {
+      this.router.navigate(['homepage']);
+    }
   }
   constructor(private service: LoginServiceService, private router: Router) {}
 }

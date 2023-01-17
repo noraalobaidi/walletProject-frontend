@@ -1,0 +1,19 @@
+<form>
+  <div>balance :{{ userbalance }} KWD</div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="number"
+      name="depositAmount"
+      id="depositAmount"
+      placeholder="Amount"
+      ngModel
+      (change)="log(depositAmount)"
+      #depositAmount="ngModel"
+      required
+    />
+  </div>
+  <button class="btn btn-primary" (click)="submitDeposit(depositAmount.value)">
+    Submit
+  </button>
+</form>

@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginServiceService {
   urlToHit: string = 'http://localhost:8080/accounts';
   accountsList!: any;
+  loggedInAccount!: any;
   constructor(private httpClient: HttpClient) {}
   getAllAccounts() {
     // console.log(`accountno:${accountno},civil${civilId} ,pass${password}`);
