@@ -1,1 +1,55 @@
-<p>transfer works!</p>
+<form>
+  <div>balance :{{ userbalance }} KWD</div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="number"
+      name="transferToAcc"
+      id="transferToAcc"
+      placeholder="To Account Number"
+      ngModel
+      (change)="log(transferToAcc)"
+      #transferToAcc="ngModel"
+      required
+      minlength="11"
+      pattern="[0-9]{11}"
+    />
+  </div>
+  <button class="btn btn-primary" (click)="SearchAccount(transferToAcc.value)">
+    Search
+  </button>
+  <div *ngIf="flagFound || flagFound">
+    {{ message }}
+  </div>
+  <div
+    class="alert alert-danger"
+    *ngIf="transferToAcc.touched && !transferToAcc.valid"
+  >
+    <div *ngIf="transferToAcc.errors?.['required']">
+      Please enter Account Number
+    </div>
+
+    <div *ngIf="transferToAcc.errors?.['pattern']">
+      Please enter a valid Account Number of length 11 numbers
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="number"
+      name="transferAmount"
+      id="transferAmount"
+      placeholder="Amount"
+      ngModel
+      (change)="log(transferAmount)"
+      #transferAmount="ngModel"
+      required
+    />
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="submitTransfer(transferAmount.value)"
+  >
+    Submit
+  </button>
+</form>

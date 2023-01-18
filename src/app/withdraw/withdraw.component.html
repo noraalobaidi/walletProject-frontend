@@ -1,1 +1,22 @@
-<p>withdraw works!</p>
+<form>
+  <div>balance :{{ userbalance }} KWD</div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      type="number"
+      name="withdrawAmount"
+      id="withdrawAmount"
+      placeholder="Amount"
+      ngModel
+      (change)="log(withdrawAmount)"
+      #withdrawAmount="ngModel"
+      required
+    />
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="submitWithdraw(withdrawAmount.value)"
+  >
+    Submit
+  </button>
+</form>

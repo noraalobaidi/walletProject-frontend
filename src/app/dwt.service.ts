@@ -11,6 +11,9 @@ export class DWTService {
   addNewTransactionUrl: string = 'http://localhost:8080/transactions/';
   constructor(private httpClient: HttpClient) {}
   updateAccount(updatedAccount: Account) {
+    console.log(
+      ` accountno :${updatedAccount.account_no}, balance :${updatedAccount.balance},civil :${updatedAccount.civil_id},first :${updatedAccount.first_name},last :${updatedAccount.last_name}`
+    );
     this.httpClient
       .put(this.updateAccUrl, updatedAccount)
       .subscribe((response) => {
@@ -22,6 +25,22 @@ export class DWTService {
   addTransaction(transaction: any, accountNumber: number) {
     this.httpClient
       .post(this.addNewTransactionUrl + accountNumber, transaction)
+      .subscribe((response) => {
+        console.log(response);
+        console.log('transaction added successfully');
+      });
+  }
+
+  addTransferTransaction(
+    transaction: any,
+    accountNumber: number,
+    transferToAccount: number
+  ) {
+    this.httpClient
+      .post(
+        this.addNewTransactionUrl + accountNumber + '/' + transferToAccount,
+        transaction
+      )
       .subscribe((response) => {
         console.log(response);
         console.log('transaction added successfully');
