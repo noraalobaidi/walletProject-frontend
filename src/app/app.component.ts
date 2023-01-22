@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DWTService } from './dwt.service';
 import { LoginServiceService } from './login-service.service';
 
 @Component({
@@ -11,6 +12,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.service.getAllAccounts();
+    this.dwtService.getAllTransactions();
+    this.service.autoLogin();
   }
-  constructor(private service: LoginServiceService) {}
+  constructor(
+    private service: LoginServiceService,
+    private dwtService: DWTService
+  ) {}
 }
