@@ -38,6 +38,12 @@ export class WithdrawComponent {
       this.newbalance = this.prebalance - num;
       this.userUpdatedAccount.balance = this.newbalance;
       this.dwtService.updateAccount(this.userUpdatedAccount);
+      let fromLocalStorage = JSON.parse(
+        localStorage.getItem('loggedinUser') || '{}'
+      );
+      console.log(fromLocalStorage);
+      fromLocalStorage.balance = this.newbalance;
+      localStorage.setItem('loggedinUser', JSON.stringify(fromLocalStorage));
       this.transaction.amount = num;
       this.transaction.date = this.newDate;
       this.transaction.new_balance = this.newbalance;
@@ -48,6 +54,7 @@ export class WithdrawComponent {
         this.userUpdatedAccount.account_no
       );
       this.service.getAllAccounts();
+      this.dwtService.getAllTransactions();
       alert('Transaction Successfull');
     } else {
       alert('insufficient balance');
