@@ -1,4 +1,134 @@
-<form>
+<div class="mycontainer">
+  <div class="innerC">
+    <div class="welcomeSection">
+      <p style="font-size: x-large; color: white; margin: 0">Welcome to</p>
+      <p style="font-size: 50px; color: white; margin: 0; font-weight: bolder">
+        AMWAJ BANK
+      </p>
+      <p style="font-size: large; color: white; margin: 0">
+        log in to access your account
+      </p>
+    </div>
+    <div class="formSection">
+      <div class="logoSection">
+        <div>logo</div>
+        <p class="english">AMWAJ BANK</p>
+        <p class="arabic">بنك أمواج</p>
+      </div>
+      <div class="fieldsSection">
+        <p style="font-size: x-large">Login Account</p>
+        <p style="font-size: x-small; color: grey; margin: 0">
+          To have full access on your bank account
+        </p>
+        <p style="font-size: x-small; color: grey">
+          Please log in to your AMWAJ account
+        </p>
+        <form class="loginForm">
+          <input
+            class="form-control"
+            style="
+              width: 300px;
+              border-radius: 0px;
+              margin: 5px;
+              border-top: 0px;
+              border-right: 0px;
+              border-left: 0px;
+              padding: 0px;
+            "
+            type="text"
+            name="civilId"
+            id="civilId"
+            placeholder="Civil Id"
+            ngModel
+            #civilId="ngModel"
+            required
+            minlength="12"
+            pattern="[0-9]{12}"
+          />
+          <div class="alertField" *ngIf="civilId.touched && !civilId.valid">
+            <div *ngIf="civilId.errors?.['required']">
+              Please enter your Civil Id
+            </div>
+
+            <div *ngIf="civilId.errors?.['pattern']">
+              Please enter a valid civil Id of length 12 numbers
+            </div>
+          </div>
+          <input
+            class="form-control"
+            style="
+              width: 300px;
+              border-radius: 0px;
+              margin: 5px;
+              border-top: 0px;
+              border-right: 0px;
+              border-left: 0px;
+              padding: 0px;
+            "
+            type="number"
+            name="accountNo"
+            id="accountNo"
+            placeholder="Account Number"
+            ngModel
+            #accountNo="ngModel"
+            required
+            minlength="11"
+            pattern="[0-9]{11}"
+          />
+          <div class="alertField" *ngIf="accountNo.touched && !accountNo.valid">
+            <div *ngIf="accountNo.errors?.['required']">
+              Please enter your Account Number
+            </div>
+
+            <div *ngIf="accountNo.errors?.['pattern']">
+              Please enter a valid Account Number of length 11 numbers
+            </div>
+          </div>
+          <input
+            class="form-control"
+            style="
+              width: 300px;
+              border-radius: 0px;
+              margin: 5px;
+              border-top: 0px;
+              border-right: 0px;
+              border-left: 0px;
+              padding: 0px;
+            "
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            ngModel
+            #password="ngModel"
+            required
+            minlength="8"
+            pattern="[a-z]{8-30}"
+          />
+
+          <button
+            class="loginBtn"
+            (click)="login(civilId.value, accountNo.value, password.value)"
+          >
+            login
+          </button>
+        </form>
+      </div>
+      <div class="signup">
+        <p style="font-size: small; color: grey; margin: 0; margin-right: 5px">
+          Don't have an account?
+        </p>
+        <a
+          style="font-size: small; color: #0184dc; margin: 0; font-weight: 500"
+          routerLink="/signup"
+          >Sign up</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <form>
   <input
     class="form-control"
     type="text"
@@ -58,4 +188,4 @@
   >
     login
   </button>
-</form>
+</form> -->
