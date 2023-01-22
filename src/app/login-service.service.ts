@@ -15,6 +15,12 @@ export class LoginServiceService {
       console.log(response);
     });
   }
+
+  autoLogin() {
+    this.loggedInAccount = JSON.parse(
+      localStorage.getItem('loggedinUser') || '{}'
+    );
+  }
   // ngOnInit() {
   //   this.getAllAccounts();
   // }

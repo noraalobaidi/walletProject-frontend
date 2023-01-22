@@ -39,6 +39,10 @@ export class LoginComponent {
               this.passwordflag = true;
               this.loggedinAccount = element;
               this.service.loggedInAccount = element;
+              localStorage.setItem(
+                'loggedinUser',
+                JSON.stringify(this.service.loggedInAccount)
+              );
             } else {
               this.passwordflag = false;
               alert('invalid password');

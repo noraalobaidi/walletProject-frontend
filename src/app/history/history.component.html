@@ -1,1 +1,30 @@
-<p>history works!</p>
+<!-- <button (click)="filterUserTransactions()">Click me</button> -->
+<div>{{ loggedInAccountNo }}</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">New Balance</th>
+      <th scope="col">Old Balance</th>
+      <th scope="col">Type</th>
+      <th scope="col">Transfer Account</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let transaction of alltransactions; let i = index">
+    <tr *ngIf="transaction.account_no.account_no == loggedInAccountNo">
+      <td>{{ i + 1 }}</td>
+      <td>{{ transaction.date }}</td>
+      <td>{{ transaction.amount }}</td>
+      <td>{{ transaction.new_balance }}</td>
+      <td>{{ transaction.pre_balance }}</td>
+      <td>{{ transaction.type }}</td>
+      <td *ngIf="transaction.transfer_acc_no != null">
+        {{ transaction.transfer_acc_no.first_name }}
+        {{ transaction.transfer_acc_no.last_name }}
+      </td>
+      <td *ngIf="transaction.transfer_acc_no == null"></td>
+    </tr>
+  </tbody>
+</table>
