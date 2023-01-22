@@ -1,0 +1,147 @@
+.navbarr {
+  background-color: #1b1464;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.containerBody {
+  /* background-color: rgb(244, 244, 244); */
+}
+
+.navBtn {
+  color: white;
+  background-color: #1b1464;
+  border: 0px;
+  margin-left: 30px;
+  font-size: large;
+}
+
+.navBtn:hover {
+  color: #0184dc;
+  background-color: #1b1464;
+  border: 0px;
+}
+
+.balanceCard {
+  height: 200px;
+  width: 1200px;
+  background-color: #2e3192;
+  border-radius: 30px;
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-left: 50px;
+}
+.Yourblance {
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 0;
+  color: white;
+}
+.balance {
+  font-size: 70px;
+  font-weight: bolder;
+  margin-top: 0px;
+  color: white;
+}
+.operations {
+  display: flex;
+  margin-top: 40px;
+  width: 1200px;
+  justify-content: space-between;
+}
+
+.operationCard {
+  width: 350px;
+  height: 200px;
+  margin: 10px;
+  background-color: rgb(0, 106, 176);
+  border-radius: 30px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+}
+
+/* .optLogo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 100px;
+  background-color: rgb(0, 184, 46, 0.471);
+  border-radius: 15px;
+} */
+
+.operationCard p {
+  font-size: 35px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.containerBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.operationCard:hover,
+.operationCard:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+  cursor: pointer;
+  /* background-color: rgb(85, 167, 255); */
+  background-color: rgb(0, 255, 187);
+}
+
+.transactions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1535px;
+  height: 80px;
+
+  margin-top: 30px;
+  background-color: #0184dc7e;
+  padding-left: 50px;
+  color: white;
+}
+.transactions p {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 500;
+}
+.transactions a {
+  margin-left: 990px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.transactionCard {
+  background-color: antiquewhite;
+  width: 600px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 15px;
+  display: flex;
+
+  align-items: center;
+}
+
+.logoCard {
+  background-color: red;
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.afterLogo {
+  width: 400px;
+  justify-content: space-evenly;
+  display: flex;
+}

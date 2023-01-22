@@ -1,0 +1,24 @@
+.transactionCard {
+  background-color: antiquewhite;
+  width: 600px;
+  height: 100px;
+  margin: 20px;
+  border-radius: 15px;
+  display: flex;
+
+  align-items: center;
+}
+
+.logoCard {
+  background-color: red;
+  width: 70px;
+  height: 70px;
+  margin: 10px;
+  border-radius: 15px;
+}
+
+.afterLogo {
+  width: 400px;
+  justify-content: space-evenly;
+  display: flex;
+}

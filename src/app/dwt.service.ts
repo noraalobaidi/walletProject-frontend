@@ -12,6 +12,8 @@ export class DWTService {
   addNewTransactionUrl: string = 'http://localhost:8080/transactions/';
   getAllTransactionUrl: string = 'http://localhost:8080/transactions';
   allTransactions!: any;
+  arr!: Transaction[];
+  last5!: any;
   // alltransactionsList: Transaction[] = [];
   // filteredListTrans: Transaction[] = [];
   constructor(
@@ -81,6 +83,8 @@ export class DWTService {
     this.httpClient.get(this.getAllTransactionUrl).subscribe((response) => {
       console.log(response);
       this.allTransactions = response;
+      this.arr = this.allTransactions;
+      this.last5 = this.arr.slice(0, 5);
       console.log('get all transactions');
       this;
     });

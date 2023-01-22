@@ -1,6 +1,6 @@
 <!-- <button (click)="filterUserTransactions()">Click me</button> -->
-<div>{{ loggedInAccountNo }}</div>
-<table class="table">
+<!-- <div>{{ loggedInAccountNo }}</div> -->
+<!-- <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -27,4 +27,81 @@
       <td *ngIf="transaction.transfer_acc_no == null"></td>
     </tr>
   </tbody>
-</table>
+</table> -->
+<div *ngFor="let transaction of alltransactions; let i = index">
+  <div
+    class="transactionCard"
+    *ngIf="transaction.account_no.account_no == loggedInAccountNo"
+  >
+    <div class="logoCard">
+      <div>logo</div>
+    </div>
+    <div class="afterLogo">
+      <div class="operation">
+        <div
+          *ngIf="
+            transaction.type == 'withdraw' || transaction.type == 'deposit'
+          "
+          class="WD"
+        >
+          <p>{{ transaction.type }}</p>
+        </div>
+        <div
+          *ngIf="
+            transaction.type == 'transfer' ||
+            transaction.type == 'deposit (transfer)'
+          "
+          class="transfer"
+        >
+          <div>
+            <p>{{ transaction.type }}</p>
+            <div style="display: flex">
+              <p
+                style="margin-right: 5px"
+                *ngIf="transaction.type == 'transfer'"
+              >
+                to
+              </p>
+              <p
+                style="margin-right: 5px"
+                *ngIf="transaction.type == 'deposit (transfer)'"
+              >
+                from
+              </p>
+              {{
+                transaction.transfer_acc_no.first_name +
+                  " " +
+                  transaction.transfer_acc_no.last_name +
+                  " " +
+                  transaction.transfer_acc_no.account_no
+              }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="balanceNdate">
+        <p
+          *ngIf="
+            transaction.type == 'transfer' || transaction.type == 'withdraw'
+          "
+          class="transferOwithdraw"
+          style="color: red"
+        >
+          - KWD{{ transaction.amount }}
+        </p>
+        <p
+          *ngIf="
+            transaction.type == 'deposit' ||
+            transaction.type == 'deposit (transfer)'
+          "
+          class="transferOdeposit"
+          style="color: green"
+        >
+          + KWD{{ transaction.amount }}
+        </p>
+        <!-- <p>KWD{{ transaction.new_balance }}</p> -->
+        <p>{{ transaction.date }}</p>
+      </div>
+    </div>
+  </div>
+</div>
