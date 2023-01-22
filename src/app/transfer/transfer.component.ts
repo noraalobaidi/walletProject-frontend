@@ -15,7 +15,7 @@ import { Transaction } from '../transaction';
 })
 export class TransferComponent {
   message!: string;
-  allAccounts: Account[] = this.service.accountsList;
+  allAccounts: Account[] = [];
   flagFound: boolean = false;
   transferAccountlist: Account[] = [];
 
@@ -40,12 +40,17 @@ export class TransferComponent {
   transferrAcc_type: string = 'deposit (transfer)';
   transferrAcc_accountNo!: number; //
   transferTransaction: Transaction = new Transaction();
+
+  // getallAccounts() {
+  //   this.allAccounts = this.service.accountsList;
+  //   console.log('getting all accounts for filter ' + this.allAccounts.length);
+  // }
   log(templateVar: NgModel) {
     console.log(templateVar);
   }
   SearchAccount(accountno: any) {
-    this.transferAccountlist = this.allAccounts.filter(
-      (account) => account.account_no == accountno
+    this.transferAccountlist = this.service.accountsList.filter(
+      (account: { account_no: any }) => account.account_no == accountno
     );
     if (this.transferAccountlist.length > 0) {
       this.transferAccount = this.transferAccountlist[0];
@@ -71,6 +76,12 @@ export class TransferComponent {
       this.newbalance = this.prebalance - num;
       this.userUpdatedAccount.balance = this.newbalance;
       this.dwtService.updateAccount(this.userUpdatedAccount);
+      let fromLocalStorage = JSON.parse(
+        localStorage.getItem('loggedinUser') || '{}'
+      );
+      console.log(fromLocalStorage);
+      fromLocalStorage.balance = this.newbalance;
+      localStorage.setItem('loggedinUser', JSON.stringify(fromLocalStorage));
       this.transaction.amount = num;
       this.transaction.date = this.newDate;
       this.transaction.new_balance = this.newbalance;
@@ -98,10 +109,14 @@ export class TransferComponent {
       );
       //
       this.service.getAllAccounts();
+      this.dwtService.getAllTransactions();
       alert('Transaction Successfull');
     } else {
       alert('insufficient balance');
     }
+  }
+  ngOnInit() {
+    // this.getallAccounts();
   }
   constructor(
     private httpClient: HttpClient,
