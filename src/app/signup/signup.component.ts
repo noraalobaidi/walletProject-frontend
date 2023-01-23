@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { LoginServiceService } from '../login-service.service';
 
 @Component({
   selector: 'signup',
@@ -13,7 +14,11 @@ export class SignupComponent {
   responseData!: any;
   result!: any;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,
+    private service: LoginServiceService
+  ) {}
 
   log(templateVar: NgModel) {
     console.log(templateVar);
@@ -66,6 +71,11 @@ export class SignupComponent {
       .subscribe((response) => {
         this.responseData = response;
         console.log(response);
+        this.service.loggedInAccount = response;
+        localStorage.setItem(
+          'loggedinUser',
+          JSON.stringify(this.service.loggedInAccount)
+        );
         alert(
           `Account created successfully , welcome ${this.responseData.first_name} `
         );

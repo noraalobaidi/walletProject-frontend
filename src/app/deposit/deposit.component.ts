@@ -55,6 +55,7 @@ export class DepositComponent {
     this.dwtService.getAllTransactions(); ///////
 
     alert('Transaction Successfull');
+    this.router.navigate(['homepage']);
   }
 
   constructor(

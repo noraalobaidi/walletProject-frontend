@@ -3,6 +3,7 @@
   height: 50px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .containerBody {
@@ -122,7 +123,7 @@
 }
 
 .transactionCard {
-  background-color: antiquewhite;
+  background-color: rgb(244, 244, 244);
   width: 600px;
   height: 100px;
   margin: 20px;
@@ -133,11 +134,14 @@
 }
 
 .logoCard {
-  background-color: red;
+  background-color: white;
   width: 70px;
   height: 70px;
   margin: 10px;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .afterLogo {

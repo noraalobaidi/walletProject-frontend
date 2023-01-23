@@ -111,6 +111,7 @@ export class TransferComponent {
       this.service.getAllAccounts();
       this.dwtService.getAllTransactions();
       alert('Transaction Successfull');
+      this.router.navigate(['homepage']);
     } else {
       alert('insufficient balance');
     }

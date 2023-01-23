@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { DWTService } from '../dwt.service';
 import { LoginServiceService } from '../login-service.service';
 import { LoginComponent } from '../login/login.component';
@@ -9,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent {
-  // allTransactions!: any;
+  // allTransactions: any = this.dwtService.allTransactions;
   userBalance: any = this.service.loggedInAccount.balance;
   loggedInAccountNo: number = this.service.loggedInAccount.account_no;
   last5: any = this.dwtService.last5;
@@ -21,8 +22,13 @@ export class HomepageComponent {
   //       this.service.loggedInAccount.account_no
   //   );
   // }
+  signout() {
+    localStorage.removeItem('loggedinUser');
+    this.router.navigate(['/login']);
+  }
   constructor(
     private dwtService: DWTService,
-    private service: LoginServiceService
+    private service: LoginServiceService,
+    private router: Router
   ) {}
 }

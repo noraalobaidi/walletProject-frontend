@@ -1,55 +1,104 @@
-<form>
-  <div>balance :{{ userbalance }} KWD</div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="number"
-      name="transferToAcc"
-      id="transferToAcc"
-      placeholder="To Account Number"
-      ngModel
-      (change)="log(transferToAcc)"
-      #transferToAcc="ngModel"
-      required
-      minlength="11"
-      pattern="[0-9]{11}"
-    />
-  </div>
-  <button class="btn btn-primary" (click)="SearchAccount(transferToAcc.value)">
-    Search
-  </button>
-  <div *ngIf="flagFound || flagFound">
-    {{ message }}
-  </div>
-  <div
-    class="alert alert-danger"
-    *ngIf="transferToAcc.touched && !transferToAcc.valid"
-  >
-    <div *ngIf="transferToAcc.errors?.['required']">
-      Please enter Account Number
+<div class="navbarr">
+  <button class="navBtn" routerLink="/homepage">Home</button>
+</div>
+<div class="mycontainer">
+  <div class="innerC">
+    <div class="welcomeSection">
+      <!-- <p style="font-size: x-large; color: white; margin: 0">Welcome to</p> -->
+      <p style="font-size: 50px; color: white; margin: 0; font-weight: bolder">
+        AMWAJ BANK
+      </p>
+      <!-- <p style="font-size: large; color: white; margin: 0">
+        log in to access your account
+      </p> -->
     </div>
+    <div class="formSection">
+      <div class="logoSection">
+        <div>logo</div>
+        <p class="english">AMWAJ BANK</p>
+        <p class="arabic">بنك أمواج</p>
+      </div>
+      <div class="fieldsSection">
+        <p style="font-size: x-large">Transfer to Account</p>
+        <p style="font-size: x-small; color: grey; margin: 0">
+          Enter transfer account number
+        </p>
 
-    <div *ngIf="transferToAcc.errors?.['pattern']">
-      Please enter a valid Account Number of length 11 numbers
+        <form>
+          <div>balance :{{ userbalance }} KWD</div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              style="
+                width: 300px;
+                border-radius: 0px;
+                margin: 5px;
+                border-top: 0px;
+                border-right: 0px;
+                border-left: 0px;
+                padding: 0px;
+              "
+              type="number"
+              name="transferToAcc"
+              id="transferToAcc"
+              placeholder="To Account Number"
+              ngModel
+              (change)="log(transferToAcc)"
+              #transferToAcc="ngModel"
+              required
+              minlength="11"
+              pattern="[0-9]{11}"
+            />
+          </div>
+          <div *ngIf="flagFound || flagFound">
+            {{ message }}
+          </div>
+          <button class="loginBtn" (click)="SearchAccount(transferToAcc.value)">
+            Search
+          </button>
+
+          <div
+            class="alertField"
+            *ngIf="transferToAcc.touched && !transferToAcc.valid"
+          >
+            <div *ngIf="transferToAcc.errors?.['required']">
+              Please enter Account Number
+            </div>
+
+            <div *ngIf="transferToAcc.errors?.['pattern']">
+              Please enter a valid Account Number of length 11 numbers
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              style="
+                width: 300px;
+                border-radius: 0px;
+                margin: 5px;
+                border-top: 0px;
+                border-right: 0px;
+                border-left: 0px;
+                padding: 0px;
+              "
+              type="number"
+              name="transferAmount"
+              id="transferAmount"
+              placeholder="Amount"
+              ngModel
+              (change)="log(transferAmount)"
+              #transferAmount="ngModel"
+              required
+            />
+          </div>
+          <button
+            class="loginBtn"
+            (click)="submitTransfer(transferAmount.value)"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="number"
-      name="transferAmount"
-      id="transferAmount"
-      placeholder="Amount"
-      ngModel
-      (change)="log(transferAmount)"
-      #transferAmount="ngModel"
-      required
-    />
-  </div>
-  <button
-    class="btn btn-primary"
-    (click)="submitTransfer(transferAmount.value)"
-  >
-    Submit
-  </button>
-</form>
+</div>

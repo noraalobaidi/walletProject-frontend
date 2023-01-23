@@ -1,5 +1,5 @@
 .transactionCard {
-  background-color: antiquewhite;
+  background-color: rgb(244, 244, 244);
   width: 600px;
   height: 100px;
   margin: 20px;
@@ -10,15 +10,136 @@
 }
 
 .logoCard {
-  background-color: red;
+  background-color: white;
   width: 70px;
   height: 70px;
   margin: 10px;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .afterLogo {
   width: 400px;
   justify-content: space-evenly;
+  display: flex;
+}
+
+.navbarr {
+  background-color: #1b1464;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.containerBody {
+  /* background-color: rgb(244, 244, 244); */
+}
+
+.navBtn {
+  color: white;
+  background-color: #1b1464;
+  border: 0px;
+  margin-left: 30px;
+  font-size: large;
+}
+
+.navBtn:hover {
+  color: #0184dc;
+  background-color: #1b1464;
+  border: 0px;
+}
+
+.alertField {
+  color: red;
+  font-size: x-small;
+  display: flex;
+  width: 300px;
+}
+.mycontainer {
+  background-color: rgb(244, 244, 244);
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerC {
+  width: 1100px;
+  height: 550px;
+  background-color: white;
+  border-radius: 25px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0px 0px 30px 40px rgba(220, 218, 218, 0.75);
+}
+
+.welcomeSection {
+  width: 550px;
+  height: 550px;
+  background-color: rgb(18, 138, 213);
+  background-image: url(https://cdn1.vectorstock.com/i/1000x1000/83/10/blue-waves-background-vector-20538310.jpg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.formSection {
+  width: 550px;
+  height: 550px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.logoSection {
+  /* width: 550px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.english {
+  margin: 0;
+  font-weight: bolder;
+  font-size: x-large;
+}
+
+.arabic {
+  margin: 0;
+  font-weight: bolder;
+  font-size: large;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fieldsSection {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginBtn {
+  border-radius: 20px;
+  width: 200px;
+  height: 35px;
+  border: 0px;
+  background-color: #2e3192;
+  font-weight: bold;
+  color: white;
+  margin-top: 10px;
+}
+.signup {
   display: flex;
 }

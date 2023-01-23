@@ -1,22 +1,61 @@
-<form>
-  <div>balance :{{ userbalance }} KWD</div>
-  <div class="form-group">
-    <input
-      class="form-control"
-      type="number"
-      name="withdrawAmount"
-      id="withdrawAmount"
-      placeholder="Amount"
-      ngModel
-      (change)="log(withdrawAmount)"
-      #withdrawAmount="ngModel"
-      required
-    />
+<div class="navbarr">
+  <button class="navBtn" routerLink="/homepage">Home</button>
+</div>
+<div class="mycontainer">
+  <div class="innerC">
+    <div class="welcomeSection">
+      <!-- <p style="font-size: x-large; color: white; margin: 0">Welcome to</p> -->
+      <p style="font-size: 50px; color: white; margin: 0; font-weight: bolder">
+        AMWAJ BANK
+      </p>
+      <!-- <p style="font-size: large; color: white; margin: 0">
+        log in to access your account
+      </p> -->
+    </div>
+    <div class="formSection">
+      <div class="logoSection">
+        <div>logo</div>
+        <p class="english">AMWAJ BANK</p>
+        <p class="arabic">بنك أمواج</p>
+      </div>
+      <div class="fieldsSection">
+        <p style="font-size: x-large">Withdraw</p>
+        <!-- <p style="font-size: x-small; color: grey; margin: 0">
+          Enter transfer account number
+        </p> -->
+
+        <form>
+          <div>balance :{{ userbalance }} KWD</div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              style="
+                width: 300px;
+                border-radius: 0px;
+                margin: 5px;
+                border-top: 0px;
+                border-right: 0px;
+                border-left: 0px;
+                padding: 0px;
+              "
+              type="number"
+              name="withdrawAmount"
+              id="withdrawAmount"
+              placeholder="Amount"
+              ngModel
+              (change)="log(withdrawAmount)"
+              #withdrawAmount="ngModel"
+              required
+            />
+          </div>
+          <button
+            class="loginBtn"
+            (click)="submitWithdraw(withdrawAmount.value)"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
-  <button
-    class="btn btn-primary"
-    (click)="submitWithdraw(withdrawAmount.value)"
-  >
-    Submit
-  </button>
-</form>
+</div>

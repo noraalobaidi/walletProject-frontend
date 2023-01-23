@@ -83,6 +83,7 @@ export class DWTService {
     this.httpClient.get(this.getAllTransactionUrl).subscribe((response) => {
       console.log(response);
       this.allTransactions = response;
+      this.allTransactions = this.allTransactions.reverse();
       this.arr = this.allTransactions;
       this.last5 = this.arr.slice(0, 5);
       console.log('get all transactions');

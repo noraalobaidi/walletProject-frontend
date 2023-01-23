@@ -1,10 +1,15 @@
 <div class="navbarr">
-  <button class="navBtn" style="margin-left: 30px" routerLink="/deposit">
-    Deposit
-  </button>
-  <button class="navBtn" routerLink="/withdraw">Withdraw</button>
-  <button class="navBtn" routerLink="/transfer">Transfer</button>
-  <button class="navBtn" routerLink="/history">Transactions History</button>
+  <div>
+    <button class="navBtn" style="margin-left: 30px" routerLink="/deposit">
+      Deposit
+    </button>
+    <button class="navBtn" routerLink="/withdraw">Withdraw</button>
+    <button class="navBtn" routerLink="/transfer">Transfer</button>
+    <button class="navBtn" routerLink="/history">Transactions History</button>
+  </div>
+  <div>
+    <a style="color: white" routerLink="/login" (click)="signout()">sign out</a>
+  </div>
 </div>
 <div class="containerBody">
   <div class="balanceCard">
@@ -36,6 +41,7 @@
     <a routerLink="/history">View All</a>
   </div>
 
+  <div *ngIf="last5 < 5"></div>
   <div *ngFor="let transaction of last5; let i = index">
     <div
       class="transactionCard"
